@@ -21,4 +21,4 @@ _DEFUN (_fstat, (fildes, st),
   return -1;
 }
 
-stub_warning(_fstat)
+//stub_warning(_fstat)

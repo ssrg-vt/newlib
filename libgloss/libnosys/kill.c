@@ -19,4 +19,4 @@ _DEFUN (_kill, (pid, sig),
   return -1;
 }
 
-stub_warning(_kill)
+//stub_warning(_kill)

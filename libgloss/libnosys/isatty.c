@@ -18,4 +18,4 @@ _DEFUN (_isatty, (file),
   return 0;
 }
 
-stub_warning(_isatty)
+//stub_warning(_isatty)

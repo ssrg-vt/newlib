@@ -20,5 +20,5 @@ _DEFUN (_write, (file, ptr, len),
   return -1;
 }
 
-stub_warning(_write)
+//stub_warning(_write)
 

@@ -18,4 +18,4 @@ _DEFUN (_unlink, (name),
   return -1;
 }
 
-stub_warning(_unlink)
+//stub_warning(_unlink)

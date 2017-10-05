@@ -23,4 +23,4 @@ _DEFUN (_gettimeofday, (ptimeval, ptimezone),
   return -1;
 }
 
-stub_warning(_gettimeofday)
+//stub_warning(_gettimeofday)

@@ -18,4 +18,4 @@ _DEFUN (_close, (fildes),
   return -1;
 }
 
-stub_warning (_close)
+//stub_warning (_close)

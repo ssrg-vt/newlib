@@ -21,4 +21,4 @@ _DEFUN (_stat, (file, st),
   return -1;
 }
 
-stub_warning(_stat)
+//stub_warning(_stat)

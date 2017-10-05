@@ -20,4 +20,4 @@ _DEFUN (_lseek, (file, ptr, dir),
   return -1;
 }
 
-stub_warning(_lseek)
+//stub_warning(_lseek)

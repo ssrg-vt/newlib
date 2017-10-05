@@ -18,4 +18,4 @@ _DEFUN (_getpid, (),
   return -1;
 }
 
-stub_warning(_getpid)
+//stub_warning(_getpid)

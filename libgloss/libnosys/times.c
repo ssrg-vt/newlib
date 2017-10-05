@@ -19,4 +19,4 @@ _DEFUN (_times, (buf),
   return -1;
 }
 
-stub_warning(_times)
+//stub_warning(_times)

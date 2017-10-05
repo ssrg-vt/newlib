@@ -18,4 +18,4 @@ _DEFUN (_wait, (status),
   return -1;
 }
 
-stub_warning(_wait)
+//stub_warning(_wait)

@@ -20,4 +20,4 @@ _DEFUN (_execve, (name, argv, env),
   return -1;
 }
 
-stub_warning(_execve)
+//stub_warning(_execve)

@@ -19,4 +19,4 @@ _DEFUN (_link, (existing, new),
   return -1;
 }
 
-stub_warning(_link)
+//stub_warning(_link)

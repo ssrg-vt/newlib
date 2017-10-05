@@ -19,4 +19,4 @@ _DEFUN (_symlink, (path1, path2),
   return -1;
 }
 
-stub_warning(_symlink)
+//stub_warning(_symlink)

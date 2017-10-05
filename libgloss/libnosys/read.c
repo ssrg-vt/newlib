@@ -20,4 +20,4 @@ _DEFUN (_read, (file, ptr, len),
   return -1;
 }
 
-stub_warning(_read)
+//stub_warning(_read)

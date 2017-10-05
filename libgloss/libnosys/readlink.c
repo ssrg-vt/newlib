@@ -21,4 +21,4 @@ _DEFUN (_readlink, (path, buf, bufsize),
   return -1;
 }
 
-stub_warning(_readlink)
+//stub_warning(_readlink)

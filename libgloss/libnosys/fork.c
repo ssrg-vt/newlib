@@ -18,4 +18,4 @@ _DEFUN (_fork, (),
   return -1;
 }
 
-stub_warning(_fork)
+//stub_warning(_fork)

@@ -20,4 +20,4 @@ _DEFUN (_open, (file, flags, mode),
   return -1;
 }
 
-stub_warning(_open)
+//stub_warning(_open)
