@@ -83,15 +83,15 @@ double frexp (double d, int *exp)
   __uint32_t hd, ld, hf, lf;
 
   /* Check for special values. */
-  switch (numtest (d))
-    {
-      case NAN:
-      case INF:
-        errno = EDOM;
-      case 0:
-        *exp = 0;
-        return (d);
-    }
+//  switch (numtestf (d))
+//    {
+//      case NAN:
+//      case INF:
+//        errno = EDOM;
+//      case 0:
+//        *exp = 0;
+//        return (d);
+//    }
 
   EXTRACT_WORDS (hd, ld, d);
 
