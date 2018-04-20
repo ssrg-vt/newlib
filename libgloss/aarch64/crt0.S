@@ -56,7 +56,7 @@
 	.word 0
 	.word \name
 #else
-	.dword \name
+	.xword \name
 #endif
 .endm
 
@@ -240,7 +240,7 @@ FUNCTION (_cpu_init_hook):
 	GEN_DWORD env
 .Lcmdline:
 	GEN_DWORD CommandLine
-	.dword	255
+	.xword	255
 
 /*  Workspace for Angel calls.  */
 	.data
@@ -252,9 +252,9 @@ FUNCTION (_cpu_init_hook):
 	.set __stack_base__, StackBase
 #endif
 	.global	__stack_base__
-HeapBase:	.dword	0
-HeapLimit:	.dword	0
-StackBase:	.dword	0
-StackLimit:	.dword	0
-env:		.dword	0	/* Dummy environment array */
+HeapBase:	.xword	0
+HeapLimit:	.xword	0
+StackBase:	.xword	0
+StackLimit:	.xword	0
+env:		.xword	0	/* Dummy environment array */
 CommandLine:	.space	256,0	/*  Maximum length of 255 chars handled.  */

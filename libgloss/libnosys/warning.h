@@ -25,9 +25,8 @@
 #  endif
 
 #else /* !ELF */
-
 #  define link_warning(symbol, msg)             \
-  asm(".stabs \"" msg "\",30,0,0,0\n"   \
+//  asm(".stabs \"" msg "\",30,0,0,0\n"   \
       ".stabs \"" __SYMBOL_PREFIX #symbol "\",1,0,0,0\n");
 # endif
 #else /* !GNULD */

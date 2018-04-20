@@ -131,10 +131,15 @@ syscall(int nr, unsigned long arg0, unsigned long arg1, unsigned long arg2)
 	long res;
 
 	// note: syscall stores the return address in rcx and rflags in r11
-	asm volatile ("syscall"
+/*	asm volatile ("syscall"
 		: "=a" (res)
 		: "a" (nr), "D" (arg0), "S" (arg1), "d" (arg2)
 		: "memory", "%rcx", "%r11");
+*/
+	asm volatile ("svc #0"
+		: "=x" (res)
+		: "x" (nr), "x" (arg0), "x" (arg1), "x" (arg2));
+
 
 	return res;
 }
