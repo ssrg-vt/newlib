@@ -45,6 +45,8 @@ void _EXFUN(__assert_func, (const char *, int, const char *, const char *)
 # define static_assert _Static_assert
 #endif
 
+void __assert_fail() {} 
+
 #ifdef __cplusplus
 }
 #endif
