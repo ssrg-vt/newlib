@@ -44,6 +44,13 @@ _DEFUN (_unlink_r, (ptr, name),
 	struct _reent *ptr _AND
         const char *name)
 {
-	ptr->_errno = ENOENT;
-	return -1;
+	int ret;
+
+	ret = sys_unlink(name);
+	if (ret < 0) {
+		ptr->_errno = -ret;
+		ret = -1;
+	}
+
+	return ret;
 }

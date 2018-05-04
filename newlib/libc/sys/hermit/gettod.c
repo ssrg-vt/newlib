@@ -34,39 +34,6 @@
 #include <errno.h>
 #include "warning.h"
 
-#if __x86_64__
-
-extern unsigned int get_cpufreq(void);
-static unsigned long long start_tsc;
-static unsigned long long freq = 0;
-
-#if 1
-inline static unsigned long long rdtsc(void)
-{
-	unsigned int lo, hi;
-
-	asm volatile ("rdtsc" : "=a"(lo), "=d"(hi) :: "memory");
-
-	return ((unsigned long long)hi << 32ULL | (unsigned long long)lo);
-}
-#else
-inline static unsigned long long rdtsc(void)
-{
-	unsigned int lo, hi;
-	unsigned int id;
-
-	asm volatile ("rdtscp" : "=a"(lo), "=c"(id), "=d"(hi));
-
-	return ((unsigned long long)hi << 32ULL | (unsigned long long)lo);
-}
-#endif
-
-__attribute__((constructor)) static void gettod_init(void)
-{
-	start_tsc = rdtsc();
-	freq = get_cpufreq() * 1000000ULL;
-}
-#endif
 int
 _DEFUN (gettimeofday, (ptimeval, ptimezone),
         struct timeval  *ptimeval  _AND
@@ -81,22 +48,13 @@ _DEFUN (_gettimeofday_r, (ptr, ptimeval, ptimezone),
         struct timeval  *ptimeval  _AND
         void *ptimezone)
 {
-#if __x86_64__
-	if (ptimeval) {
-		unsigned long long diff = rdtsc() - start_tsc;
+	int ret;
 
-		ptimeval->tv_sec = diff / freq;
-		ptimeval->tv_usec = ((diff - ptimeval->tv_sec * freq) * 1000000ULL) / freq;
+	ret = sys_gettimeofday(ptimeval, ptimezone);
+	if(ret < 0) {
+		ptr->_errno = -ret;
+		ret = -1;
 	}
 
-	if (ptimezone) {
-		ptr->_errno = ENOSYS;
-		return -1;
-	}
-
-	return 0;
-#else
-	ptr->_errno = ENOSYS;
-	return -1;
-#endif
+	return ret;
 }
