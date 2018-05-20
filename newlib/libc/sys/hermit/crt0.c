@@ -39,6 +39,10 @@ extern char** environ;
 
 #define PHYS	0x800000ULL
 
+/* Used by the stack transformation runtime to identify the 'base' of the stack,
+ * i.e. parts that should not be rewritten */
+void *__popcorn_stack_base;
+
 int libc_start(int argc, char** argv, char** env)
 {
    int ret;
@@ -52,8 +56,14 @@ int libc_start(int argc, char** argv, char** env)
    /* optind is the index of the next element to be processed in argv */
    optind = 0;
 
-   if (env)
+  /* Setup the stack base location for popcorn - this needs to be done before
+        * the constructors are called as the stack transformation runtime actually
+        * looks for it in a constructor */
+   __popcorn_stack_base = argv;
+   if (env) {
       environ = env;
+          __popcorn_stack_base = env;
+   }
 
    /* initialize simple signal handling */
    _init_signal();
