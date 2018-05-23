@@ -37,24 +37,15 @@ extern void __libc_fini_array (void);
 extern int _init_signal(void);
 extern char** environ;
 
-#define PHYS	0x800000ULL
-
 /* Used by the stack transformation runtime to identify the 'base' of the stack,
  * i.e. parts that should not be rewritten */
 void *__popcorn_stack_base;
 
+#define PHYS	0x800000ULL
+
 int libc_start(int argc, char** argv, char** env)
 {
    int ret;
-
-   /* call init function */
-   __libc_init_array();
-
-   /* register a function to be called at normal process termination */
-   atexit(__libc_fini_array);
-
-   /* optind is the index of the next element to be processed in argv */
-   optind = 0;
 
   /* Setup the stack base location for popcorn - this needs to be done before
         * the constructors are called as the stack transformation runtime actually
@@ -65,7 +56,16 @@ int libc_start(int argc, char** argv, char** env)
           __popcorn_stack_base = env;
    }
 
-   /* initialize simple signal handling */
+    /* call init function */
+   __libc_init_array();
+
+   /* register a function to be called at normal process termination */
+   atexit(__libc_fini_array);
+
+   /* optind is the index of the next element to be processed in argv */
+   optind = 0;
+
+  /* initialize simple signal handling */
    _init_signal();
 
    ret = main(argc, argv);
