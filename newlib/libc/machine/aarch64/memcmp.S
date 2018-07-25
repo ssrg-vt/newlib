@@ -35,7 +35,7 @@
  */
 
 	.macro def_fn f p2align=0
-	.text
+	.section .text.\f
 	.p2align \p2align
 	.global \f
 	.type \f, %function
@@ -63,7 +63,6 @@
 #define limit_wd	x12
 #define mask		x13
 
-.section .text.memcmp, "ax"
 def_fn memcmp p2align=6
 	cbz	limit, .Lret0
 	eor	tmp1, src1, src2
