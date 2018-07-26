@@ -69,9 +69,8 @@
  * things occur in the original string, counting trailing zeros allows to
  * identify exactly which byte has matched.
  */
-
 	.macro def_fn f p2align=0
-	.text
+	.section .text.\f
 	.p2align \p2align
 	.global \f
 	.type \f, %function
