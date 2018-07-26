@@ -34,7 +34,7 @@
  */
 
 	.macro def_fn f p2align=0
-	.text
+	.section .text.\f
 	.p2align \p2align
 	.global \f
 	.type \f, %function
