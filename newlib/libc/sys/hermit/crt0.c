@@ -79,6 +79,7 @@ int libc_start(int argc, char** argv, char** env)
    return 0;
 }
 
+#ifdef __x86_64__
 int get_cpufreq(void)
 {
    return *((int*) (PHYS + 0x18));
@@ -93,3 +94,9 @@ int get_num_cpus(void)
 {
    return *((int*) (PHYS + 0x20));
 }
+#elif defined(__aarch64__)
+int get_num_cpus(void)
+{
+   return *((int*) (PHYS + 0x120));
+}
+#endif
