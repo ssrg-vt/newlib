@@ -10,6 +10,7 @@
 
   #include "x86_64mach.h"
 
+  .section .text.memcpy, "ax"
   .global SYM (memcpy)
   SOTYPE_FUNCTION(memcpy)
 

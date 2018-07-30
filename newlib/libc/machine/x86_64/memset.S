@@ -10,6 +10,7 @@
 
   #include "x86_64mach.h"
 
+  .section .text.memset, "ax"
   .global SYM (memset)
   SOTYPE_FUNCTION(memset)
 
