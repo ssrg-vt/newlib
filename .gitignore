@@ -42,4 +42,5 @@ core
 !core/
 
 lost+found
-build
+build-x86-64
+build-aarch64
