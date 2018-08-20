@@ -50,10 +50,10 @@ int libc_start(int argc, char** argv, char** env)
   /* Setup the stack base location for popcorn - this needs to be done before
         * the constructors are called as the stack transformation runtime actually
         * looks for it in a constructor */
-   __popcorn_stack_base = argv;
+   __popcorn_stack_base = &argv;
    if (env) {
       environ = env;
-          __popcorn_stack_base = env;
+          __popcorn_stack_base = &env;
    }
 
     /* call init function */
