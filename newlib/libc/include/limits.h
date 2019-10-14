@@ -128,6 +128,7 @@
 
 #if defined __GNUC__ && !defined _GCC_LIMITS_H_
 /* `_GCC_LIMITS_H_' is what GCC's file defines.  */
+#define __GLIBC_USE(F)  __GLIBC_USE_ ## F
 # include_next <limits.h>
 #endif /* __GNUC__ && !_GCC_LIMITS_H_ */
 
